@@ -5,12 +5,11 @@
 ## Partitioning your device
 
 ### Prerequisites
-- A brain (most important of all)
-- [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img)
-
-- [ADB & Fastboot](https://developer.android.com/studio/releases/platform-tools)
-
-- [Parted](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/parted)
+* A brain (most important of all)
+* Please ensure that the MIUI system or underlying system used is the latest locally available
+* [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img)
+* [ADB & Fastboot](https://developer.android.com/studio/releases/platform-tools)
+* [Parted](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/parted)
 
 ### Notes
 > [!WARNING]  
