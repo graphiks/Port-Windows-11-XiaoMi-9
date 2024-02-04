@@ -1,6 +1,3 @@
-<img align="right" src="https://raw.githubusercontent.com/graphiks/woa-raphael/main/media/raphael.png" width="350" alt="Windows 11 Running On raphael">
-
-
 # Running Windows on the XiaoMi 9 (Cepheus)
 
 ## Reinstall guide
@@ -8,11 +5,9 @@
 > This guide is used whenever you want to update or change your windows and / or driver installation.
 
 ### Prerequisites
-- [TWRP](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/twrp.img) (should already be installed)
-- [DriverUpdater](https://github.com/WOA-Project/DriverUpdater/releases/tag/v1.9.0.0) (must use v1.9.0.0)
-- [Drivers](https://github.com/graphiks/woa-raphael/releases/download/raphael-drivers/raphael-drivers.zip)
-- [UEFI image](https://github.com/graphiks/woa-raphael/releases/download/raphael-uefi/xiaomi-raphael.img)
-- [Msc script](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/msc.sh)
+* [TWRP](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/twrp.img) (should already be installed)
+* [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools)
+* [Msc script](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/msc.sh)
 
 ## Reinstalling Windows
 > [!IMPORTANT]
@@ -99,36 +94,50 @@ exit
 ```
 
 ## Installing Windows
-> Skip this step if you are only reinstalling/updating drivers
-
 > Replace `path\to\install.wim` with the actual path to install.wim.
 
 > If you are using an ISO file, it is located in the sources folder inside the ISO. Mount the ISO with Windows Explorer and then copy the path to it.
-> Alternatively, use one of the install.esd files from the Google Drive at the top of this page. Touch doesn't seem to work on 23h2, so use 22h2.
+> Alternatively, use one of the install.esd files from the Google Drive at the top of this page.
 
 ```cmd
 dism /apply-image /ImageFile:path\to\install.wim /index:1 /ApplyDir:X:\
 ```
 
-##### Installing Drivers
-> Put the right driverupdater.exe for your machine in the path where your command window is currently opened. For example if you are in C:\platform-tools, put the driverupdater there.
+## Get Driver
+> [!NOTE]
+> - To ensure the matching between UEFI and drivers, we recommend that all users download drivers directly from Releases
 
-> Replace `path\to` with the actual location of the drivers folder
-```cmd
-DriverUpdater.exe -p X: -d path\to\raphael-Drivers-main\definitions\Desktop\ARM64\Internal\raphael.txt -r .
+* You can get the released version through [Releases](https://github.com/qaz6750/XiaoMi9-Drivers/releases) 
+
+## Installing the drivers
+* Going to Mass Storage
+* Assign drive letters to Windows and EFI of your phone
+* Extract the drivers, Extract driver updater, and from the command prompt in the DriverUpdater.X86.exe(Or DriverUpdater.AMD64.exe or DriverUpdater.X86.exe) directory:
+
 ```
+DriverUpdater.X86.exe -d "<path to extracted drivers>\definitions\Desktop\ARM64\Internal\cepheus.xml" -r "<path to extracted drivers>" -p X:\
+```
+## About Choosing the Right UEFI
+### Enable SecureBoot
+> [!NOTE]
+> - Under normal conditions, please use MuCepheusSecureBoot.img
+### Disable SecureBoot
+> [!NOTE]
+> - If you need to enable testing mode, please use MuCepheusDisableSecureBoot.img
+> - If you need to start systems like Linux, you also need to disable secure boot
+> - And it requires disable driver signature checks
 
 ##### Create Windows bootloader files
-> Skip this step if you are only reinstalling/updating drivers
 ```cmd
 bcdboot X:\Windows /s Y: /f UEFI
 ```
-
 ###### Configuring bootloader files
-> Skip this step if you are only reinstalling/updating drivers
-> Run these 4 commands seperately
+* Run these 5 commands seperately
 ```cmd
 cd Y:\EFI\Microsoft\Boot
+```
+```cmd
+Y:
 ```
 ```cmd
 bcdedit /store BCD /set "{default}" testsigning on

@@ -20,7 +20,7 @@
 > 
 > Do not run the same command twice.
 > 
-> DO NOT REBOOT YOUR PHONE if you think you made a mistake, ask for help in the [Telegram chat](https://t.me/woaraphael).
+> DO NOT REBOOT YOUR PHONE if you think you made a mistake, ask for help in the [Telegram chat](https://t.me/WinOnMi9).
 > 
 >
 > Do not run all commands at once, execute them in order!
@@ -44,7 +44,7 @@ fastboot flash recovery path\to\twrp.img reboot recovery
 Use TWRP now to back up your Modem and EFS partition (as well as anything else if you have important data). Move this backup to a safe place (e.g your PC) as the next steps will wipe your data.
 
 ### Partitioning guide
-> Your Redmi K20 Pro / Mi 9T Pro may have different storage sizes. This guide uses the values of the 128GB model as an example. When relevant, the guide will mention if other values can or should be used.
+> Your XiaoMi 9 may have different storage sizes. This guide uses the values of the 128GB model as an example. When relevant, the guide will mention if other values can or should be used.
 
 ##### Extending the partition limit
 ```cmd

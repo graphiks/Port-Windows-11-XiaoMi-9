@@ -8,8 +8,7 @@
 
 * [Windows on ARM64 image creator](https://uupdump.net/) |
   [Alternatively, a ready-to-go ESD](https://drive.google.com/drive/folders/1JEC2QhFTyZhnm4qdzeFANTmeqoDCbS1I?usp=drive_link) 
-* [Drivers](https://github.com/qaz6750/XiaoMi9-Drivers/releases)
-* [DriverUpdater](https://github.com/WOA-Project/DriverUpdater/releases/tag/v1.9.0.0) 
+* [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools) 
 * [Msc script](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/msc.sh)
 * [TWRP](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/twrp.img) (should already be installed)
 
@@ -99,21 +98,36 @@ exit
 dism /apply-image /ImageFile:path\to\install.wim /index:1 /ApplyDir:X:\
 ```
 
-##### Installing Drivers
+## Get Driver
+> [!NOTE]
+> - To ensure the matching between UEFI and drivers, we recommend that all users download drivers directly from Releases
 
-> Put driverupdater.exe in the same folder as your drivers folder
+* You can get the released version through [Releases](https://github.com/qaz6750/XiaoMi9-Drivers/releases) 
 
-```cmd
-DriverUpdater.exe -p X: -d .\definitions\Desktop\ARM64\Internal\raphael.txt -r .
+## Installing the drivers
+* Going to Mass Storage
+* Assign drive letters to Windows and EFI of your phone
+* Extract the drivers, Extract driver updater, and from the command prompt in the DriverUpdater.X86.exe(Or DriverUpdater.AMD64.exe or DriverUpdater.X86.exe) directory:
+
 ```
-  
+DriverUpdater.X86.exe -d "<path to extracted drivers>\definitions\Desktop\ARM64\Internal\cepheus.xml" -r "<path to extracted drivers>" -p X:\
+```
+## About Choosing the Right UEFI
+### Enable SecureBoot
+> [!NOTE]
+> - Under normal conditions, please use MuCepheusSecureBoot.img
+### Disable SecureBoot
+> [!NOTE]
+> - If you need to enable testing mode, please use MuCepheusDisableSecureBoot.img
+> - If you need to start systems like Linux, you also need to disable secure boot
+> - And it requires disable driver signature checks
+
 ##### Create Windows bootloader files
 ```cmd
 bcdboot X:\Windows /s Y: /f UEFI
 ```
-
 ###### Configuring bootloader files
-> Run these 4 commands seperately
+* Run these 5 commands seperately
 ```cmd
 cd Y:\EFI\Microsoft\Boot
 ```
@@ -171,21 +185,22 @@ adb reboot recovery
 ```
 
 ##### Push the UEFI to your phone
-> Drag and drop the UEFI (xiaomi-raphael.img) to your phone
+* Normally, you should use MuCepheusSecureBoot.img
+* Drag and drop the UEFI (MuCepheusSecureBoot.img Or MuCepheusDisableSecureBoot.img) to your phone.
 
 ##### Back up your Android boot image
-Use the TWRP backup feature to backup your Android boot image. Name this backup "Android"
+* Use the TWRP backup feature to backup your Android boot image. Name this backup "Android"
 
 ##### Flash the UEFI
-Use the TWRP install feature to flash the UEFI image to your boot partition. Select "install image", then locate the image.
+* Use the TWRP install feature to flash the UEFI image to your boot partition. Select "install image", then locate the image.
 
 ##### Back up your Windows boot image
-Use the TWRP backup feature to backup your Windows boot image. Name this backup "Windows"
+* Use the TWRP backup feature to backup your Windows boot image. Name this backup "Windows"
 
 ##### Boot into Windows
-After having flashed the UEFI image, reboot your phone.
+* After having flashed the UEFI image, reboot your phone.
 
-Your device will now set up Windows. This will take some time. It will eventually reboot, and after that the initial setup (oobe) should launch.
+* Your device will now set up Windows. This will take some time. It will eventually reboot, and after that the initial setup (oobe) should launch.
 
 ## Setting up Windows
 > [!IMPORTANT]
