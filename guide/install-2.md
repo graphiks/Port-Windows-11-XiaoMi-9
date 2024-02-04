@@ -1,7 +1,4 @@
-<img align="right" src="https://raw.githubusercontent.com/graphiks/woa-raphael/main/media/raphael.png" width="350" alt="Windows 11 Running On raphael">
-
-
-# Running Windows on the  Mi 9T Pro / Redmi K20 Pro 
+# Running Windows on the XiaoMi 9 (Cepheus)
 
 ## Installation
 
@@ -9,13 +6,12 @@
 
 ### Prerequisites
 
-- [Windows on ARM64 image creator](https://uupdump.net/) |
- [Alternatively, a ready-to-go ESD](https://drive.google.com/drive/folders/1JEC2QhFTyZhnm4qdzeFANTmeqoDCbS1I?usp=drive_link) 
-- [UEFI image](https://github.com/graphiks/woa-raphael/releases/download/raphael-uefi/xiaomi-raphael.img)
-- [Drivers](https://github.com/graphiks/woa-raphael/releases/download/raphael-drivers/raphael-drivers.zip)
-- [DriverUpdater](https://github.com/WOA-Project/DriverUpdater/releases/tag/v1.9.0.0) 
-- [Msc script](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/msc.sh)
-- [TWRP](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/twrp.img) (should already be installed)
+* [Windows on ARM64 image creator](https://uupdump.net/) |
+  [Alternatively, a ready-to-go ESD](https://drive.google.com/drive/folders/1JEC2QhFTyZhnm4qdzeFANTmeqoDCbS1I?usp=drive_link) 
+* [Drivers](https://github.com/qaz6750/XiaoMi9-Drivers/releases)
+* [DriverUpdater](https://github.com/WOA-Project/DriverUpdater/releases/tag/v1.9.0.0) 
+* [Msc script](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/msc.sh)
+* [TWRP](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/twrp.img) (should already be installed)
 
 ##### Boot to TWRP
 > If rebooting on the last page has replaced your recovery back to stock, flash it again in fastboot with:

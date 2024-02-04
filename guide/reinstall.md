@@ -1,7 +1,7 @@
 <img align="right" src="https://raw.githubusercontent.com/graphiks/woa-raphael/main/media/raphael.png" width="350" alt="Windows 11 Running On raphael">
 
 
-# Running Windows on the Redmi K20 Pro / Mi 9T Pro
+# Running Windows on the XiaoMi 9 (Cepheus)
 
 ## Reinstall guide
 > [!NOTE]
