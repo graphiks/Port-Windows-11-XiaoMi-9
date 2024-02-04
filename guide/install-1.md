@@ -6,11 +6,11 @@
 
 ### Prerequisites
 - A brain (most important of all)
-- [TWRP](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/twrp.img)
+- [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img)
 
 - [ADB & Fastboot](https://developer.android.com/studio/releases/platform-tools)
 
-- [Parted](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/parted)
+- [Parted](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/parted)
 
 ### Notes
 > [!WARNING]  

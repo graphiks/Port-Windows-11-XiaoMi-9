@@ -9,8 +9,8 @@
 * [Windows on ARM64 image creator](https://uupdump.net/) |
   [Alternatively, a ready-to-go ESD](https://drive.google.com/drive/folders/1JEC2QhFTyZhnm4qdzeFANTmeqoDCbS1I?usp=drive_link) 
 * [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools) 
-* [Msc script](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/msc.sh)
-* [TWRP](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/twrp.img) (should already be installed)
+* [Msc script](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/msc.sh)
+* [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
 
 ##### Boot to TWRP
 > If rebooting on the last page has replaced your recovery back to stock, flash it again in fastboot with:

@@ -5,9 +5,9 @@
 > This guide is used whenever you want to update or change your windows and / or driver installation.
 
 ### Prerequisites
-* [TWRP](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/twrp.img) (should already be installed)
+* [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
 * [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools)
-* [Msc script](https://github.com/graphiks/woa-raphael/releases/download/raphael-partitioning/msc.sh)
+* [Msc script](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/msc.sh)
 
 ## Reinstalling Windows
 > [!IMPORTANT]
