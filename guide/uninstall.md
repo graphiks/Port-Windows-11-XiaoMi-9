@@ -10,7 +10,7 @@ If you want to relock your bootloader you'll need your partition table to be sto
 ### Prerequisites
 
 - [ADB & Fastboot](https://developer.android.com/studio/releases/platform-tools)
-- [gpt_both0.bin](https://github.com/graphiks/woa-raphael/releases/download/raphael-stock/gpt_both0.bin)
+- [gpt_both0](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/gpt_both0.bin)
 
 #### Uninstall instructions
 
