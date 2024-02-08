@@ -109,7 +109,15 @@ exit
 dism /apply-image /ImageFile:path\to\install.esd /index:6 /ApplyDir:X:\
 ```
 
+## Installing the drivers
+> [!NOTE]
+> To ensure the matching between UEFI and drivers, we recommend that all users download drivers directly from [Releases](https://github.com/qaz6750/XiaoMi9-Drivers/releases)
 
+> Extract the drivers and driverupdater, and open command prompt in the directory of the driverupdater. Replace `X86` with either `AMD64` or `ARM64` respectively depending on the machine you are running the command on (NOT YOUR CEPHEUS).
+
+```
+DriverUpdater.X86.exe -d "<path to extracted drivers>\definitions\Desktop\ARM64\Internal\cepheus.xml" -r "<path to extracted drivers>" -p X:\
+```
 
 ## About Choosing the Right UEFI
 ### Enable SecureBoot
@@ -121,27 +129,16 @@ dism /apply-image /ImageFile:path\to\install.esd /index:6 /ApplyDir:X:\
 > - If you need to start systems like Linux, you also need to disable secure boot
 > - And it requires disable driver signature checks
 
-##### Create Windows bootloader files
+## Create Windows bootloader files
 ```cmd
 bcdboot X:\Windows /s Y: /f UEFI
 ```
-###### Configuring bootloader files
-* Run these 5 commands seperately
-```cmd
-cd Y:\EFI\Microsoft\Boot
-```
-```cmd
-Y:
-```
-```cmd
-bcdedit /store BCD /set "{default}" testsigning on
-```
-```cmd
-bcdedit /store BCD /set "{default}" nointegritychecks on
-```
-```cmd
-bcdedit /store BCD /set "{default}" recoveryenabled no
-```
+
+## Choosing the Right UEFI
+> Depending on your usage of Windows, you may want to have secureboot enabled or disabled.
+
+With secureboot enabled, you can not update drivers while in Windows and a PC is needed to update them. With secureboot disabled, you can update drivers directly from your phone. However, with secureboot disabled, you will have a "Test Mode" watermark on the bottom right of your homescreen, and some apps or games may not run (this is however very rare)
+
 
 ## Unassign disk letters
 > So that they don't stay there after disconnecting the device
@@ -173,45 +170,6 @@ remove letter y
 ```diskpart
 exit
 ```
-
-## Backing up boot images
-
-##### Reboot your recovery
-> To remove the msc script
-- Reboot to recovery through TWRP, or run
-```cmd
-adb reboot recovery
-```
-
-##### Push the UEFI to your phone
-> Drag and drop the UEFI (xiaomi-raphael.img) to your phone
-
-##### Back up your Android boot image
-Use the TWRP backup feature to backup your Android boot image. Name this backup "Android"
-
-##### Flash the UEFI
-Use the TWRP install feature to flash the UEFI image to your boot partition. Select "install image", then locate the image.
-
-##### Back up your Windows boot image
-Use the TWRP backup feature to backup your Windows boot image. Name this backup "Windows"
-
-## Boot into Windows
-After having flashed the UEFI image, reboot your phone.
-
-Your device will now set up Windows. This will take some time. It will eventually reboot, and after that the initial setup (oobe) should launch.
-
-## Setting up Windows
-> You will have to run the limited setup because Wi-Fi does not work during boot.
-
-To do this, open the accessibility menu and open the on-screen keyboard, then press SHIFT + F10 to open CMD where you will run
-```cmd
-oobe/bypassnro
-```
-Your device will now reboot. Finish setup after it boots back up. Make sure to press the "I don't have internet" button during setup.
-
-After windows finishes booting, you may notice thay USB does not work. To fix this, enable USB host mode using the optional [post install guide](postinstall.md).
-
-After doing this, press the restart button and force boot to TWRP with the button combination after the screen shuts off.
 
 
 ## [Next step: Setting up dualboot](/guide/dualboot.md)
