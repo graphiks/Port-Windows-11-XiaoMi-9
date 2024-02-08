@@ -18,15 +18,13 @@
 
 * [Installation instructions](guide/install-1.md)
 
-* [Update Drivers and UEFI](guide/update.md)
+* [Reinstall / update instructions](guide/reinstall.md)
 
 * [Troubleshooting](guide/troubleshooting.md)
 
 ## Miscellaneous
 
 * [Optional post-install stuff](guide/postinstall.md)
-
-* [Reinstall instructions](guide/reinstall.md)
 
 * [Uninstall instructions](guide/uninstall.md)
 
