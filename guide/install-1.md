@@ -43,8 +43,10 @@ fastboot flash recovery path\to\twrp.img reboot recovery
 Use TWRP now to back up your Modem and EFS partition (as well as anything else if you have important data). Move this backup to a safe place (e.g your PC) as the next steps will wipe your data.
 
 ### Partitioning guide
-> Your XiaoMi 9 may have different storage sizes. This guide uses the values of the 128GB model as an example. When relevant, the guide will mention if other values can or should be used.
-
+> [!NOTE]
+> - Your XiaoMi 9 may have different storage sizes. 
+> - This guide uses the values of the 128GB model as an example. 
+> - When relevant, the guide will mention if other values can or should be used.
 ##### Extending the partition limit
 ```cmd
 adb shell sgdisk --resize-table=128 /dev/block/sda
@@ -122,6 +124,5 @@ quit
 
 #### Check if Android still starts
 Just restart the phone, and see if Android still works
-
 
 ## [Next step: Installing Windows](/guide/install-2.md)

@@ -41,20 +41,21 @@ diskpart
 
 ##### Finding your phone
 ```cmd
-lis dis
+list disk
 ```
-> This will show all available disks. Find the disk number of your phone and replace it with "$" in the command below
+> This will show all available disks. Find the disk number of your phone and replace it with "number" in the command below
 ```cmd
-sel dis $
+select disk <number>
 ```
 
 ##### Selecting the ESP partition
 ```cmd
 lis par
 ```
-> This will print out all of the partitions in the selected disk. Check if they match up with your device and replace "$" with the number of the ESP partition (usually 30 or 31)
+> This will print out all of the partitions in the selected disk. Check if they match up with your device and replace "ESP partition number" with the number of the ESP partition 
+> (usually 30 or 31)
 ```cmd
-sel par $
+sel par <ESP partition number>
 ```
 
 ##### Formatting the ESP partition
@@ -62,15 +63,20 @@ sel par $
 ```cmd
 format quick fs=fat32 label="System"
 ```
-> Now add letter Y to the ESP partition
+> Assign a letter to the ESP drive
 ```cmd
-assign letter y
+assign letter <Any letter, as long as it has not been assigned to any drive>
 ```
+* Here we assume that you have assigned the letter X
 
 ##### Selecting the Windows partitiom
-> Replace "$" in the command below with the number of the Windows partition, usually 31 or 32. If you don't know the number, run "lis par" again
+> [!NOTE]
+> - The Windows partition here is not the letter C drive on the computer
+
+> Replace "Win partition number" in the command below with the number of the Windows partition, usually 31 or 32. 
+> If you don't know the number, run "lis par" again.
 ```cmd
-sel par $
+sel par <Win partition number>
 ```
 
 ##### Formatting the Windows partition
@@ -78,10 +84,12 @@ sel par $
 ```cmd
 format quick fs=ntfs label=Windows
 ```
-> Now add letter X to the Windows partition
+> Assign a letter to the Win drive
+> 
 ```cmd
-assign letter x
+assign letter <Any letter, as long as it has not been assigned to any drive>
 ```
+* Here we assume that you have assigned the letter Y
 
 ##### Exit diskpart
 ```cmd
@@ -89,10 +97,13 @@ exit
 ```
 
 ## Installing Windows
+* Below, we assume that your ESP drive letter is the letter X
+* Below, we assume that your Win drive letter is the letter Y
+
 > Replace `path\to\install.wim` with the actual path to install.wim.
 
 > If you are using an ISO file, it is located in the sources folder inside the ISO. Mount the ISO with Windows Explorer and then copy the path to it.
-> Alternatively, use one of the install.esd files from the Google Drive at the top of this page. Touch doesn't seem to work on 23h2, so use 22h2.
+> Alternatively, use one of the install.esd files from the Google Drive at the top of this page.
 
 ```cmd
 dism /apply-image /ImageFile:path\to\install.wim /index:1 /ApplyDir:X:\
@@ -204,7 +215,8 @@ adb reboot recovery
 
 ## Setting up Windows
 > [!IMPORTANT]
-> USB will not work except if you have a powered USB hub. We can fix this after we get into the desktop.
+> OTG may encounter issues due to USB's inability to automatically switch from charging mode to OTG mode
+> We need to manually switch USB mode
 
 Before continuing with setup, open the accessibility menu in the bottom right corner and enable the on-screen keyboard, then tap FN+SHIFT + F10 (if it asks you to tap somewhere to type just tap the background) which will open a command prompt, in which you will need to type:
 ```cmd
