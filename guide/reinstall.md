@@ -1,3 +1,5 @@
+<img align="right" src="https://cdn.discordapp.com/attachments/546427343045132298/1205180951454552135/cepheusnew.webp" width="350" alt="Windows 11 running on cepheus">
+
 # Running Windows on the XiaoMi 9 (Cepheus)
 
 ## Reinstall guide
@@ -94,29 +96,21 @@ exit
 ```
 
 ## Installing Windows
-> Replace `path\to\install.wim` with the actual path to install.wim.
+> [NOTE]
+> Skip this step if you are only reinstalling/updating your drivers
 
-> If you are using an ISO file, it is located in the sources folder inside the ISO. Mount the ISO with Windows Explorer and then copy the path to it.
-> Alternatively, use one of the install.esd files from the Google Drive at the top of this page.
+> Replace `path\to\install.esd` with the actual path to install.esd.
+
+> If you are using an ISO file, the image file is located in the sources folder inside the ISO. Mount the ISO with Windows Explorer and then copy the path to it.
+
+> Replace `index:6` with `index:1` if your image is not from the link in this guide.
 
 ```cmd
-dism /apply-image /ImageFile:path\to\install.wim /index:1 /ApplyDir:X:\
+dism /apply-image /ImageFile:path\to\install.esd /index:6 /ApplyDir:X:\
 ```
 
-## Get Driver
-> [!NOTE]
-> - To ensure the matching between UEFI and drivers, we recommend that all users download drivers directly from Releases
 
-* You can get the released version through [Releases](https://github.com/qaz6750/XiaoMi9-Drivers/releases) 
 
-## Installing the drivers
-* Going to Mass Storage
-* Assign drive letters to Windows and EFI of your phone
-* Extract the drivers, Extract driver updater, and from the command prompt in the DriverUpdater.X86.exe(Or DriverUpdater.AMD64.exe or DriverUpdater.X86.exe) directory:
-
-```
-DriverUpdater.X86.exe -d "<path to extracted drivers>\definitions\Desktop\ARM64\Internal\cepheus.xml" -r "<path to extracted drivers>" -p X:\
-```
 ## About Choosing the Right UEFI
 ### Enable SecureBoot
 > [!NOTE]
