@@ -119,16 +119,6 @@ dism /apply-image /ImageFile:path\to\install.esd /index:6 /ApplyDir:X:\
 DriverUpdater.X86.exe -d "<path to extracted drivers>\definitions\Desktop\ARM64\Internal\cepheus.xml" -r "<path to extracted drivers>" -p X:\
 ```
 
-## About Choosing the Right UEFI
-### Enable SecureBoot
-> [!NOTE]
-> - Under normal conditions, please use MuCepheusSecureBoot.img
-### Disable SecureBoot
-> [!NOTE]
-> - If you need to enable testing mode, please use MuCepheusDisableSecureBoot.img
-> - If you need to start systems like Linux, you also need to disable secure boot
-> - And it requires disable driver signature checks
-
 ## Create Windows bootloader files
 ```cmd
 bcdboot X:\Windows /s Y: /f UEFI
@@ -139,6 +129,26 @@ bcdboot X:\Windows /s Y: /f UEFI
 
 With secureboot enabled, you can not update drivers while in Windows and a PC is needed to update them. With secureboot disabled, you can update drivers directly from your phone. However, with secureboot disabled, you will have a "Test Mode" watermark on the bottom right of your homescreen, and some apps or games may not run (this is however very rare)
 
+## Configuring bootloader files
+> [!IMPORTANT]
+> Skip this step entirely if you want to enable secureboot
+
+Run these 5 commands seperately
+```cmd
+cd Y:\EFI\Microsoft\Boot
+```
+```cmd
+Y:
+```
+```cmd
+bcdedit /store BCD /set "{default}" testsigning on
+```
+```cmd
+bcdedit /store BCD /set "{default}" nointegritychecks on
+```
+```cmd
+bcdedit /store BCD /set "{default}" recoveryenabled no
+```
 
 ## Unassign disk letters
 > So that they don't stay there after disconnecting the device
