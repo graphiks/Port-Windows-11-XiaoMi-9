@@ -8,6 +8,7 @@
 
 ### Prerequisites
 * [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
+* [Drivers](https://github.com/qaz6750/XiaoMi9-Drivers/releases)
 * [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools)
 * [Msc script](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/msc.sh)
 
@@ -61,7 +62,8 @@ sel par $
 ```
 
 ##### Formatting the ESP partition
-> Skip this step if you are only reinstalling/updating drivers, or you will have to also reapply the image.
+> [!NOTE]
+> Skip this step if you are only reinstalling/updating drivers, or you will have to also recreate bootloader files
 > This will format ESP to fat32
 ```cmd
 format quick fs=fat32 label="System"
@@ -79,6 +81,7 @@ sel par $
 ```
 
 ##### Formatting the Windows partition
+> [!NOTE]
 > Skip this step if you are only reinstalling/updating drivers, or you will have to also reapply the image.
 > This will format Windows to NTFS
 ```cmd
@@ -96,7 +99,7 @@ exit
 ```
 
 ## Installing Windows
-> [NOTE]
+> [!NOTE]
 > Skip this step if you are only reinstalling/updating your drivers
 
 > Replace `path\to\install.esd` with the actual path to install.esd.
@@ -120,18 +123,15 @@ DriverUpdater.X86.exe -d "<path to extracted drivers>\definitions\Desktop\ARM64\
 ```
 
 ## Create Windows bootloader files
+> [!NOTE]
+> Skip this step if you are only reinstalling/updating your drivers
 ```cmd
 bcdboot X:\Windows /s Y: /f UEFI
 ```
 
-## Choosing the Right UEFI
-> Depending on your usage of Windows, you may want to have secureboot enabled or disabled.
-
-With secureboot enabled, you can not update drivers while in Windows and a PC is needed to update them. With secureboot disabled, you can update drivers directly from your phone. However, with secureboot disabled, you will have a "Test Mode" watermark on the bottom right of your homescreen, and some apps or games may not run (this is however very rare)
-
 ## Configuring bootloader files
 > [!IMPORTANT]
-> Skip this step entirely if you want to enable secureboot
+> Skip this step entirely if you want to enable secureboot, or if you are only reinstalling/updating your drivers
 
 Run these 5 commands seperately
 ```cmd
@@ -181,5 +181,13 @@ remove letter y
 exit
 ```
 
+##### Flash the UEFI
+> [!NOTE]
+> You can also restore your "Windows" boot backuo you made during the first installation, unless you changed from test mode to secureboot or vice versa
+
+> Use the TWRP install feature to flash the UEFI image to your boot partition. Select "install image", then locate the image.
+
+##### Booting into Windows
+Just reboot.
 
 ## [Next step: Setting up dualboot](/guide/dualboot.md)
