@@ -1,5 +1,5 @@
 
-# Running Windows on the Xiaomi 9 (Cepheus)  based on [woa-raphael](https://github.com/graphiks/woa-raphael)
+# Running Windows on the Xiaomi 9 (Cepheus)
 
 [![telegram](https://img.shields.io/badge/chat-telegram-brightgreen.svg?logo=telegram&style=flat-square)](https://t.me/WinOnMi9)
 
