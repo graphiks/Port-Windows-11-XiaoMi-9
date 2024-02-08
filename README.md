@@ -18,11 +18,13 @@
 
 * [Installation instructions](guide/install-1.md)
 
-* [Reinstall / update instructions](guide/reinstall.md)
-
 * [Troubleshooting](guide/troubleshooting.md)
 
 ## Miscellaneous
+
+* [Dualboot setup](guide/dualboot.md)
+* 
+* [Reinstall / update instructions](guide/reinstall.md)
 
 * [Optional post-install stuff](guide/postinstall.md)
 
