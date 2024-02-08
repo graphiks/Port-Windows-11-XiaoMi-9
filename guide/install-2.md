@@ -1,3 +1,5 @@
+<img align="right" src="https://cdn.discordapp.com/attachments/546427343045132298/1205180951454552135/cepheusnew.webp" width="350" alt="Windows 11 running on cepheus">
+
 # Running Windows on the XiaoMi 9 (Cepheus)
 
 ## Installation
@@ -6,8 +8,9 @@
 
 ### Prerequisites
 
-* [Windows on ARM64 image creator](https://uupdump.net/) |
-  [Alternatively, a ready-to-go ESD](https://drive.google.com/drive/folders/1JEC2QhFTyZhnm4qdzeFANTmeqoDCbS1I?usp=drive_link) 
+* [Windows ARM64 ESD](https;//worproject.com/esd)
+* Drivers (UPDATE THIS LINK)
+* UEFI image (UPDATE THIS LINK)
 * [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools) 
 * [Msc script](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/msc.sh)
 * [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
@@ -65,15 +68,12 @@ format quick fs=fat32 label="System"
 ```
 > Assign a letter to the ESP drive
 ```cmd
-assign letter <Any letter, as long as it has not been assigned to any drive>
+assign letter Y
 ```
-* Here we assume that you have assigned the letter X
 
-##### Selecting the Windows partitiom
-> [!NOTE]
-> - The Windows partition here is not the letter C drive on the computer
-
-> Replace "Win partition number" in the command below with the number of the Windows partition, usually 31 or 32. 
+##### Selecting the Windows partition
+> Replace "Win partition number" in the command below with the number of the Windows partition on your phone, usually 31 or 32.
+> 
 > If you don't know the number, run "lis par" again.
 ```cmd
 sel par <Win partition number>
@@ -87,9 +87,8 @@ format quick fs=ntfs label=Windows
 > Assign a letter to the Win drive
 > 
 ```cmd
-assign letter <Any letter, as long as it has not been assigned to any drive>
+assign letter X
 ```
-* Here we assume that you have assigned the letter Y
 
 ##### Exit diskpart
 ```cmd
@@ -97,48 +96,41 @@ exit
 ```
 
 ## Installing Windows
-* Below, we assume that your ESP drive letter is the letter X
-* Below, we assume that your Win drive letter is the letter Y
+> Replace `path\to\install.esd` with the actual path to install.esd.
 
-> Replace `path\to\install.wim` with the actual path to install.wim.
+> If you are using an ISO file, the image file is located in the sources folder inside the ISO. Mount the ISO with Windows Explorer and then copy the path to it.
 
-> If you are using an ISO file, it is located in the sources folder inside the ISO. Mount the ISO with Windows Explorer and then copy the path to it.
-> Alternatively, use one of the install.esd files from the Google Drive at the top of this page.
+> Replace `index:6` with `index:1` if your image is not from the link in this guide.
 
 ```cmd
-dism /apply-image /ImageFile:path\to\install.wim /index:1 /ApplyDir:X:\
+dism /apply-image /ImageFile:path\to\install.esd /index:6 /ApplyDir:X:\
 ```
 
-## Get Driver
-> [!NOTE]
-> - To ensure the matching between UEFI and drivers, we recommend that all users download drivers directly from Releases
-
-* You can get the released version through [Releases](https://github.com/qaz6750/XiaoMi9-Drivers/releases) 
-
 ## Installing the drivers
-* Going to Mass Storage
-* Assign drive letters to Windows and EFI of your phone
-* Extract the drivers, Extract driver updater, and from the command prompt in the DriverUpdater.X86.exe(Or DriverUpdater.AMD64.exe or DriverUpdater.X86.exe) directory:
+> [!NOTE]
+> To ensure the matching between UEFI and drivers, we recommend that all users download drivers directly from [Releases](https://github.com/qaz6750/XiaoMi9-Drivers/releases)
+
+> Extract the drivers and driverupdater, and open command prompt in the directory of the driverupdater. Replace `X86` with either `AMD64` or `ARM64` respectively depending on the machine you are running the command on (NOT YOUR CEPHEUS).
 
 ```
 DriverUpdater.X86.exe -d "<path to extracted drivers>\definitions\Desktop\ARM64\Internal\cepheus.xml" -r "<path to extracted drivers>" -p X:\
 ```
-## About Choosing the Right UEFI
-### Enable SecureBoot
-> [!NOTE]
-> - Under normal conditions, please use MuCepheusSecureBoot.img
-### Disable SecureBoot
-> [!NOTE]
-> - If you need to enable testing mode, please use MuCepheusDisableSecureBoot.img
-> - If you need to start systems like Linux, you also need to disable secure boot
-> - And it requires disable driver signature checks
 
-##### Create Windows bootloader files
+## Create Windows bootloader files
 ```cmd
 bcdboot X:\Windows /s Y: /f UEFI
 ```
-###### Configuring bootloader files
-* Run these 5 commands seperately
+
+## Choosing the Right UEFI
+> Depending on your usage of Windows, you may want to have secureboot enabled or disabled.
+
+With secureboot enabled, you can not update drivers while in Windows and a PC is needed to update them. With secureboot disabled, you can update drivers directly from your phone. However, with secureboot disabled, you will have a "Test Mode" watermark on the bottom right of your homescreen, and some apps or games may not run (this is however very rare)
+
+## Configuring bootloader files
+> [!IMPORTANT]
+> Skip this step entirely if you want to enable secureboot
+
+Run these 5 commands seperately
 ```cmd
 cd Y:\EFI\Microsoft\Boot
 ```
@@ -195,28 +187,28 @@ exit
 adb reboot recovery
 ```
 
-##### Push the UEFI to your phone
-* Normally, you should use MuCepheusSecureBoot.img
-* Drag and drop the UEFI (MuCepheusSecureBoot.img Or MuCepheusDisableSecureBoot.img) to your phone.
-
 ##### Back up your Android boot image
-* Use the TWRP backup feature to backup your Android boot image. Name this backup "Android"
+> Use the TWRP backup feature to backup your Android boot image. Name this backup "Android"
+
+##### Push the UEFI to your phone
+> Depending on whether you want to enable or disable secureboot, drag and drop MuCepheusSecureBoot.img or MuCepheusDisableSecureBoot.img to your phone's internal storage.
+> If you want to disable secureboot, make sure you ran all commands in the "Configuring bootloader files" section
 
 ##### Flash the UEFI
-* Use the TWRP install feature to flash the UEFI image to your boot partition. Select "install image", then locate the image.
+> Use the TWRP install feature to flash the UEFI image to your boot partition. Select "install image", then locate the image.
 
 ##### Back up your Windows boot image
-* Use the TWRP backup feature to backup your Windows boot image. Name this backup "Windows"
+> Use the TWRP backup feature to backup your Windows boot image. Name this backup "Windows"
 
 ##### Boot into Windows
-* After having flashed the UEFI image, reboot your phone.
+> After having flashed the UEFI image, reboot your phone.
 
 * Your device will now set up Windows. This will take some time. It will eventually reboot, and after that the initial setup (oobe) should launch.
 
 ## Setting up Windows
 > [!IMPORTANT]
 > OTG may encounter issues due to USB's inability to automatically switch from charging mode to OTG mode
-> We need to manually switch USB mode
+> We need to manually switch the USB mode later on
 
 Before continuing with setup, open the accessibility menu in the bottom right corner and enable the on-screen keyboard, then tap FN+SHIFT + F10 (if it asks you to tap somewhere to type just tap the background) which will open a command prompt, in which you will need to type:
 ```cmd

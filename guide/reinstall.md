@@ -1,3 +1,5 @@
+<img align="right" src="https://cdn.discordapp.com/attachments/546427343045132298/1205180951454552135/cepheusnew.webp" width="350" alt="Windows 11 running on cepheus">
+
 # Running Windows on the XiaoMi 9 (Cepheus)
 
 ## Reinstall guide
@@ -5,9 +7,12 @@
 > This guide is used whenever you want to update or change your windows and / or driver installation.
 
 ### Prerequisites
-* [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
-* [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools)
+* [Windows ARM64 ESD](https;//worproject.com/esd)
+* Drivers (UPDATE THIS LINK)
+* UEFI image (UPDATE THIS LINK)
+* [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools) 
 * [Msc script](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/msc.sh)
+* [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
 
 ## Reinstalling Windows
 > [!IMPORTANT]
@@ -59,7 +64,8 @@ sel par $
 ```
 
 ##### Formatting the ESP partition
-> Skip this step if you are only reinstalling/updating drivers, or you will have to also reapply the image.
+> [!NOTE]
+> Skip this step if you are only reinstalling/updating drivers, or you will have to also recreate bootloader files
 > This will format ESP to fat32
 ```cmd
 format quick fs=fat32 label="System"
@@ -77,6 +83,7 @@ sel par $
 ```
 
 ##### Formatting the Windows partition
+> [!NOTE]
 > Skip this step if you are only reinstalling/updating drivers, or you will have to also reapply the image.
 > This will format Windows to NTFS
 ```cmd
@@ -94,45 +101,41 @@ exit
 ```
 
 ## Installing Windows
-> Replace `path\to\install.wim` with the actual path to install.wim.
+> [!NOTE]
+> Skip this step if you are only reinstalling/updating your drivers
 
-> If you are using an ISO file, it is located in the sources folder inside the ISO. Mount the ISO with Windows Explorer and then copy the path to it.
-> Alternatively, use one of the install.esd files from the Google Drive at the top of this page.
+> Replace `path\to\install.esd` with the actual path to install.esd.
+
+> If you are using an ISO file, the image file is located in the sources folder inside the ISO. Mount the ISO with Windows Explorer and then copy the path to it.
+
+> Replace `index:6` with `index:1` if your image is not from the link in this guide.
 
 ```cmd
-dism /apply-image /ImageFile:path\to\install.wim /index:1 /ApplyDir:X:\
+dism /apply-image /ImageFile:path\to\install.esd /index:6 /ApplyDir:X:\
 ```
 
-## Get Driver
-> [!NOTE]
-> - To ensure the matching between UEFI and drivers, we recommend that all users download drivers directly from Releases
-
-* You can get the released version through [Releases](https://github.com/qaz6750/XiaoMi9-Drivers/releases) 
-
 ## Installing the drivers
-* Going to Mass Storage
-* Assign drive letters to Windows and EFI of your phone
-* Extract the drivers, Extract driver updater, and from the command prompt in the DriverUpdater.X86.exe(Or DriverUpdater.AMD64.exe or DriverUpdater.X86.exe) directory:
+> [!NOTE]
+> To ensure the matching between UEFI and drivers, we recommend that all users download drivers directly from [Releases](https://github.com/qaz6750/XiaoMi9-Drivers/releases)
+
+> Extract the drivers and driverupdater, and open command prompt in the directory of the driverupdater. Replace `X86` with either `AMD64` or `ARM64` respectively depending on the machine you are running the command on (NOT YOUR CEPHEUS).
 
 ```
 DriverUpdater.X86.exe -d "<path to extracted drivers>\definitions\Desktop\ARM64\Internal\cepheus.xml" -r "<path to extracted drivers>" -p X:\
 ```
-## About Choosing the Right UEFI
-### Enable SecureBoot
-> [!NOTE]
-> - Under normal conditions, please use MuCepheusSecureBoot.img
-### Disable SecureBoot
-> [!NOTE]
-> - If you need to enable testing mode, please use MuCepheusDisableSecureBoot.img
-> - If you need to start systems like Linux, you also need to disable secure boot
-> - And it requires disable driver signature checks
 
-##### Create Windows bootloader files
+## Create Windows bootloader files
+> [!NOTE]
+> Skip this step if you are only reinstalling/updating your drivers
 ```cmd
 bcdboot X:\Windows /s Y: /f UEFI
 ```
-###### Configuring bootloader files
-* Run these 5 commands seperately
+
+## Configuring bootloader files
+> [!IMPORTANT]
+> Skip this step entirely if you want to enable secureboot, or if you are only reinstalling/updating your drivers
+
+Run these 5 commands seperately
 ```cmd
 cd Y:\EFI\Microsoft\Boot
 ```
@@ -180,44 +183,13 @@ remove letter y
 exit
 ```
 
-## Backing up boot images
-
-##### Reboot your recovery
-> To remove the msc script
-- Reboot to recovery through TWRP, or run
-```cmd
-adb reboot recovery
-```
-
-##### Push the UEFI to your phone
-> Drag and drop the UEFI (xiaomi-raphael.img) to your phone
-
-##### Back up your Android boot image
-Use the TWRP backup feature to backup your Android boot image. Name this backup "Android"
-
 ##### Flash the UEFI
-Use the TWRP install feature to flash the UEFI image to your boot partition. Select "install image", then locate the image.
+> [!NOTE]
+> You can also restore your "Windows" boot backuo you made during the first installation, unless you changed from test mode to secureboot or vice versa
 
-##### Back up your Windows boot image
-Use the TWRP backup feature to backup your Windows boot image. Name this backup "Windows"
+> Use the TWRP install feature to flash the UEFI image to your boot partition. Select "install image", then locate the image.
 
-## Boot into Windows
-After having flashed the UEFI image, reboot your phone.
-
-Your device will now set up Windows. This will take some time. It will eventually reboot, and after that the initial setup (oobe) should launch.
-
-## Setting up Windows
-> You will have to run the limited setup because Wi-Fi does not work during boot.
-
-To do this, open the accessibility menu and open the on-screen keyboard, then press SHIFT + F10 to open CMD where you will run
-```cmd
-oobe/bypassnro
-```
-Your device will now reboot. Finish setup after it boots back up. Make sure to press the "I don't have internet" button during setup.
-
-After windows finishes booting, you may notice thay USB does not work. To fix this, enable USB host mode using the optional [post install guide](postinstall.md).
-
-After doing this, press the restart button and force boot to TWRP with the button combination after the screen shuts off.
-
+##### Booting into Windows
+Just reboot.
 
 ## [Next step: Setting up dualboot](/guide/dualboot.md)

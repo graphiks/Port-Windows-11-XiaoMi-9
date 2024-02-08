@@ -1,5 +1,6 @@
+<img align="right" src="https://cdn.discordapp.com/attachments/546427343045132298/1205180951454552135/cepheusnew.webp" width="350" alt="Windows 11 running on cepheus">
 
-# Running Windows on the Xiaomi 9 (Cepheus)  based on [woa-raphael](https://github.com/graphiks/woa-raphael)
+# Running Windows on the Xiaomi 9 (Cepheus)
 
 [![telegram](https://img.shields.io/badge/chat-telegram-brightgreen.svg?logo=telegram&style=flat-square)](https://t.me/WinOnMi9)
 
@@ -17,15 +18,15 @@
 
 * [Installation instructions](guide/install-1.md)
 
-* [Update Drivers and UEFI](guide/update.md)
-
 * [Troubleshooting](guide/troubleshooting.md)
 
 ## Miscellaneous
 
-* [Optional post-install stuff](guide/postinstall.md)
+* [Dualboot setup](guide/dualboot.md)
+* 
+* [Reinstall / update instructions](guide/reinstall.md)
 
-* [Reinstall instructions](guide/reinstall.md)
+* [Optional post-install stuff](guide/postinstall.md)
 
 * [Uninstall instructions](guide/uninstall.md)
 

@@ -1,3 +1,5 @@
+<img align="right" src="https://cdn.discordapp.com/attachments/546427343045132298/1205180951454552135/cepheusnew.webp" width="350" alt="Windows 11 running on cepheus">
+
 # Running Windows on the XiaoMi 9 (Cepheus)
 
 ## Root guide
