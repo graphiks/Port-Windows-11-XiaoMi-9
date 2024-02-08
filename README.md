@@ -1,5 +1,6 @@
 
-# Running Windows on the Xiaomi 9 (Cepheus)
+# Running Windows on the Xiaomi 9 (Cepheus)  based on [woa-raphael](https://github.com/graphiks/woa-raphael)
+
 [![telegram](https://img.shields.io/badge/chat-telegram-brightgreen.svg?logo=telegram&style=flat-square)](https://t.me/WinOnMi9)
 
 > [!WARNING]
@@ -18,9 +19,7 @@
 
 - [Troubleshooting](guide/troubleshooting.md)
 
-
 ## Miscellaneous
-
 
 - [Optional post-install stuff](guide/postinstall.md)
 
@@ -32,6 +31,9 @@
   - [Gustave Monce](https://github.com/gus33000)
   - [Sunflower2333](https://github.com/sunflower2333)
   - [Map220v](https://github.com/map220v)
+  - [graphiks](https://github.com/graphiks)
+  - [n00b69](https://github.com/n00b69)
+  - [degdag](https://github.com/degdag)
   - [WOA-Project](https://github.com/WOA-Project)
   - [Woa-Msmnile](https://github.com/woa-msmnile)
   - [Renegade Project](https://github.com/edk2-porting)
