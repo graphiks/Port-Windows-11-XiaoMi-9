@@ -7,10 +7,12 @@
 > This guide is used whenever you want to update or change your windows and / or driver installation.
 
 ### Prerequisites
-* [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
-* [Drivers](https://github.com/qaz6750/XiaoMi9-Drivers/releases)
-* [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools)
+* [Windows ARM64 ESD](https;//worproject.com/esd)
+* Drivers (UPDATE THIS LINK)
+* UEFI image (UPDATE THIS LINK)
+* [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools) 
 * [Msc script](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/msc.sh)
+* [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
 
 ## Reinstalling Windows
 > [!IMPORTANT]
