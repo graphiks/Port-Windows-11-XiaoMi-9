@@ -13,28 +13,30 @@
 
 ## Get Started
 
-- [Project status](https://github.com/qaz6750/XiaoMi9-Drivers/blob/main/Status.md)
+* [Project status](https://github.com/qaz6750/XiaoMi9-Drivers/blob/main/Status.md)
 
-- [Installation instructions](guide/install-1.md)
+* [Installation instructions](guide/install-1.md)
 
-- [Troubleshooting](guide/troubleshooting.md)
+* [Update Drivers and UEFI](guide/update.md)
+
+* [Troubleshooting](guide/troubleshooting.md)
 
 ## Miscellaneous
 
-- [Optional post-install stuff](guide/postinstall.md)
+* [Optional post-install stuff](guide/postinstall.md)
 
-- [Reinstall instructions](guide/reinstall.md)
+* [Reinstall instructions](guide/reinstall.md)
 
-- [Uninstall instructions](guide/uninstall.md)
+* [Uninstall instructions](guide/uninstall.md)
 
 ## Acknowledgements
-  - [Gustave Monce](https://github.com/gus33000)
-  - [Sunflower2333](https://github.com/sunflower2333)
-  - [Map220v](https://github.com/map220v)
-  - [graphiks](https://github.com/graphiks)
-  - [n00b69](https://github.com/n00b69)
-  - [degdag](https://github.com/degdag)
-  - [WOA-Project](https://github.com/WOA-Project)
-  - [Woa-Msmnile](https://github.com/woa-msmnile)
-  - [Renegade Project](https://github.com/edk2-porting)
-  - All people who put forward issues.
+  * [Gustave Monce](https://github.com/gus33000)
+  * [Sunflower2333](https://github.com/sunflower2333)
+  * [Map220v](https://github.com/map220v)
+  * [graphiks](https://github.com/graphiks)
+  * [n00b69](https://github.com/n00b69)
+  * [degdag](https://github.com/degdag)
+  * [WOA-Project](https://github.com/WOA-Project)
+  * [Woa-Msmnile](https://github.com/woa-msmnile)
+  * [Renegade Project](https://github.com/edk2-porting)
+  * All people who put forward issues.

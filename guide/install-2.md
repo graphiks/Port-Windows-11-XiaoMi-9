@@ -217,6 +217,3 @@ bypassnro.cmd
 Your device will now reboot. Continue setup as normal. Make sure to press the "I don't have internet" button when you reach the **Let's connect you to a network** section.
 
 If you want USB working read this [post install guide](postinstall.md).
-
-
-## [Next step: Setting up dualboot](/guide/dualboot.md)
