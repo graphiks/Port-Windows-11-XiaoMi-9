@@ -9,8 +9,7 @@
 ### Prerequisites
 
 * [Windows ARM64 ESD](https;//worproject.com/esd)
-* Drivers (UPDATE THIS LINK)
-* UEFI image (UPDATE THIS LINK)
+* Drivers and UEFI image (https://github.com/qaz6750/XiaoMi9-Drivers/releases/)
 * [DriverUpdater](https://github.com/qaz6750/XiaoMi9-Drivers/tree/main/tools) 
 * [Msc script](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/msc.sh)
 * [TWRP](https://github.com/qaz6750/Port-Windows-11-XiaoMi-9/releases/download/Tools/twrp.img) (should already be installed)
