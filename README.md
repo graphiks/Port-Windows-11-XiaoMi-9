@@ -23,7 +23,7 @@
 ## Miscellaneous
 
 * [Dualboot setup](guide/dualboot.md)
-* 
+
 * [Reinstall / update instructions](guide/reinstall.md)
 
 * [Optional post-install stuff](guide/postinstall.md)
